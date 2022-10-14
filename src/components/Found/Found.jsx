@@ -50,7 +50,7 @@ export default function Found({ title, investment }) {
 
 				<tbody>
 					{reduceInvestment &&
-						reduceInvestment.map((investment, index, arr) => {
+						reduceInvestment.map((investment) => {
 							return (
 								<tr key={investment.id}>
 									<td>
