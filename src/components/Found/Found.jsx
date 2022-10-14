@@ -3,21 +3,28 @@ import React from "react";
 export default function Found({ title, investment }) {
 	const reduceInvestment =
 		investment &&
-		investment.reduce((acc, curValue, index) => {
+		investment.reduce((acc, currentValue, index) => {
 			if (index === 0) {
-				acc = [{ ...curValue, porcent: 0 }];
-			} else {
-			acc.push({
-					...curValue,
-					porcent: Number(
-						(((curValue.value - acc[index - 1].value)/acc[index - 1].value)*100)
-					).toFixed(
-						2
-					)
-				})
+				return [
+					...acc,
+					{
+						...currentValue,
+						porcent: 0
+					}
+				];
 			}
 
-			return acc;
+			return [
+				...acc,
+				{
+					...currentValue,
+					porcent: Number(
+						((currentValue.value - acc[index - 1].value) /
+							acc[index - 1].value) *
+							100
+					).toFixed(2)
+				}
+			];
 		}, []);
 
 	return (
